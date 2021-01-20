@@ -1,0 +1,6 @@
+com.example.carbon_counter_front_end.app
+com.example.carbon_counter_front_end.data.logic
+com.example.carbon_counter_front_end.data.model
+com.example.carbon_counter_front_end.data.view
+com.example.carbon_counter_front_end.net_utils
+com.example.carbon_counter_front_end.ui.main

@@ -1,0 +1,122 @@
+# Stages of pipeline, should match with stage tag inside each job.
+# Each stages executes in sequence, if previous job fails, then all the preceeding jobs are skipped.
+stages:
+  - mavenBuild
+  - mavenTest
+  - autoDeploy
+  - updateDocs
+  - androidBuild
+  - androidTest
+
+# tags: "shell" should match with the tag name provided to runner, for spring runner should execute in shell.
+# Notice that in petclinic project, the spring project is in root of master, if yours is in folder then cd to that folder.
+maven-build:
+  stage: mavenBuild
+  tags:
+    - spring_runner_tag
+  only:
+    refs:
+      - master
+    changes:
+      - Backend/**/*
+  script:
+    - cd Backend/carbon_counter
+    - mvn package -B
+  artifacts:
+    paths:
+      - Backend/carbon_counter/target/*.jar
+
+# artifacts are created when job executes successfully, and can be manually downloaded from GitLab GUI.
+# artifacts are not mandatory, but its good practice, in case auto deploy fails, you can manually download the jar.
+maven-test:
+  stage: mavenTest
+  tags:
+    - spring_runner_tag
+  only:
+    refs:
+      - master
+    changes:
+      - Backend/**/*
+  script:
+    - cd Backend/carbon_counter
+    - mvn test
+# Below stage builds, deploys and executes the jar as service.
+# Make sure there is /target directory in your server, else script will fail, or use any other folder you like.
+# If you are changing the folder, reflect the change in systemd-web-demo service too.
+autoDeploy:
+  stage: autoDeploy
+  tags:
+   - spring_runner_tag
+  only: # Will only run if these conditions are met, check documentation for more!
+    refs:
+      - master
+      - schedules
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /deploy/
+  script:
+    - cd Backend/carbon_counter
+    - mvn package
+    - sudo mv target/*.jar ~/bin/carbon_counter_backend.jar
+    # restart the service to deploy new backend
+    - sudo systemctl stop carbon_counter.service
+    - sudo systemctl start carbon_counter.service
+
+updateDocs:
+  stage: updateDocs
+  tags:
+   - spring_runner_tag
+  only: # Will only run if these conditions are met, check documentation for more!
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update docs/
+      - $CI_COMMIT_MESSAGE =~ /deploy/
+  script:
+    - cd Backend/carbon_counter
+    - mvn javadoc:javadoc
+    #remove all current doc files and replace with new version
+    - sudo rm -r /var/www/html/backend/*
+    - sudo cp -r target/site/apidocs/* /var/www/html/backend
+  artifacts:
+    paths:
+      - Backend/carbon_counter/target/site/apidocs/*
+    
+# To build android projects
+# Notice that we cd into Android_test folder which contains all Android files before building apk.    
+# Ensure the tag matches with the tag created for Android runner
+# Android runner should have docker as executor.
+android-build:
+  image: javiersantos/android-ci:latest
+  stage: androidBuild
+  tags:
+   - android_runner_tag
+  only:
+    refs:
+      - master
+    changes:
+      - Frontend/**/*
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - chmod +x ./Frontend/carbon_counter_front_end/gradlew
+  script:
+    - cd Frontend/carbon_counter_front_end
+    - ./gradlew assemble
+  artifacts:
+    paths:
+    - Frontend/carbon_counter_front_end/app/build/outputs/
+    
+# To run Android unit tests.   
+unitTests:
+  image: javiersantos/android-ci:latest
+  stage: androidTest
+  only:
+    refs:
+      - master
+    changes:
+      - Frontend/**/*
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - chmod +x ./Frontend/carbon_counter_front_end/gradlew
+  tags:
+   - android_runner_tag
+  script:
+    - cd Frontend/carbon_counter_front_end
+    - ./gradlew test

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.tc_4.carbon_counter"},{"l":"com.tc_4.carbon_counter.controllers"},{"l":"com.tc_4.carbon_counter.databases"},{"l":"com.tc_4.carbon_counter.exceptions"},{"l":"com.tc_4.carbon_counter.models"},{"l":"com.tc_4.carbon_counter.security"},{"l":"com.tc_4.carbon_counter.services"}]

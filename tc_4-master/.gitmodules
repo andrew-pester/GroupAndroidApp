@@ -1,0 +1,6 @@
+[submodule "Experiments/ColtonsExperiments/springBootTest/Experiments/ColtonsExperiments/springBootTest/petclinic-mysql"]
+	path = Experiments/ColtonsExperiments/springBootTest/Experiments/ColtonsExperiments/springBootTest/petclinic-mysql
+	url = https://git.linux.iastate.edu/tghosh/petclinic-mysql/
+[submodule "Experiments/ColtonsExperiments/springBootTest/petclinic-mysql"]
+	path = Experiments/ColtonsExperiments/springBootTest/petclinic-mysql
+	url = https://git.linux.iastate.edu/tghosh/petclinic-mysql/

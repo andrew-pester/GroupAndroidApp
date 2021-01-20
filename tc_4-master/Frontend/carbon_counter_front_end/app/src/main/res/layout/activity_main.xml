@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".data.view.MainActivity">
+
+    <Button
+        android:id="@+id/buttonfriendlist"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="523dp"
+        android:layout_marginBottom="115dp"
+        android:background="@drawable/mybutton"
+        android:text="Friends" />
+
+    <Button
+        android:id="@+id/AdminLogin"
+        android:layout_width="312dp"
+        android:layout_height="81dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="619dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/mybutton"
+        android:text="Admin Page" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="130dp"
+        android:layout_height="78dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="524dp"
+        android:layout_marginBottom="115dp"
+        android:background="@drawable/mybutton"
+        android:text="Logout" />
+
+    <Button
+        android:id="@+id/buttonView"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="345dp"
+        android:background="@drawable/mybutton"
+        android:text="@string/view_my_stats" />
+
+    <Button
+        android:id="@+id/buttonViewTip"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="435dp"
+        android:background="@drawable/mybutton"
+        android:text="@string/view_tip_categories" />
+
+    <Button
+        android:id="@+id/buttonAddTip"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="433dp"
+        android:background="@drawable/mybutton"
+        android:text="Add New Tip" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="345dp"
+        android:layout_marginEnd="46dp"
+        android:background="@drawable/mybutton"
+        android:text="@string/update_my_stats" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="7dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonNewsNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="278dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/mybutton"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/buttonNewsPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="278dp"
+        android:layout_marginEnd="284dp"
+        android:background="@drawable/mybutton"
+        android:text="Previous" />
+
+    <Button
+        android:id="@+id/buttonGo"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="278dp"
+        android:background="@drawable/mybutton"
+        android:text="GO" />
+
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="208dp"
+        android:text="" />
+</RelativeLayout>

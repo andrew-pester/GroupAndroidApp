@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.carbon_counter_front_end">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".app.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Carbon Counter"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".data.view.FreindRequestsActivity"></activity>
+        <activity android:name=".data.view.FriendListActivity" />
+        <activity android:name=".data.view.FriendPageActivity" />
+        <activity android:name=".data.view.AddTipActivity" />
+        <activity android:name=".data.view.ViewCategoryResults" />
+        <activity android:name=".data.view.AdminUpdateUser" />
+        <activity android:name=".data.view.TipCategoryActivity" />
+        <activity android:name=".data.view.TipApprovalActivity" />
+        <activity
+            android:name=".data.view.AdminTipApprovalActivity"
+            android:label="@string/title_activity_admin_tip_approval"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="MissingClass" />
+        <activity android:name=".data.view.AdminOverview" />
+        <activity android:name=".data.view.CreateUserActivity" />
+        <activity android:name=".data.view.ViewActivity" />
+        <activity android:name=".data.view.UpdateActivity" />
+        <activity android:name=".data.view.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".data.view.MainActivity" />
+    </application>
+
+</manifest>
